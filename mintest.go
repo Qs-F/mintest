@@ -1,6 +1,10 @@
 package mintest
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/davecgh/go-spew/spew"
+)
 
 type TestSlice struct {
 	Input  interface{}
@@ -12,9 +16,9 @@ type TestSlice struct {
 type TestSlices []TestSlice
 
 func Error(pattern TestSlice, result interface{}) string {
-	return fmt.Sprintln("\nOutcome: Error", "\nResult:", fmt.Sprintf("%#v", result), "\nPattern:", fmt.Sprintf("%#v", pattern))
+	return fmt.Sprintln("\nOutcome: Error", "\nResult :", spew.Sdump(result), "\nPattern:", spew.Sdump(pattern))
 }
 
 func Log(pattern TestSlice, result interface{}) string {
-	return fmt.Sprintln("\nOutcome: Success", "\nResult :", fmt.Sprintf("%#v", result), "\nPattern:", fmt.Sprintf("%#v", pattern))
+	return fmt.Sprintln("\nOutcome: Success", "\nResult :", spew.Sdump(result), "\nPattern:", spew.Sdump(pattern))
 }
